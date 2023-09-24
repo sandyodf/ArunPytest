@@ -10,7 +10,7 @@ from pytest_metadata.plugin import metadata_key
 
 @pytest.fixture(scope="class")
 def setupbrowser(request):
-    global  driver
+    global driver
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
@@ -22,12 +22,23 @@ def setupbrowser(request):
     driver.close()
 
 
+"""
+
+Below method is used to change title of automation report 
+
+"""
+
+
 def pytest_html_report_title(report):
     report.title = "Sandeep autotmation"
 
 
 def pytest_configure(config):
-    config.stash[metadata_key]["foo"] = "bar"
+    # config.stash[metadata_key]["TestEnvironment"] = "Production"
+    from pytest_metadata.plugin import metadata_key
+    @pytest.hookimpl(tryfirst=True)
+    def pytest_sessionfinish(session, exitstatus):
+        session.config.stash[metadata_key]["foo"] = "bar"
 
 
 @pytest.mark.hookwrapper
@@ -55,3 +66,4 @@ def pytest_runtest_makereport(item):
 
 def _capture_screenshot(name):
     driver.get_screenshot_as_file(name)
+
