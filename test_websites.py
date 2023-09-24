@@ -8,8 +8,7 @@ class TestWebsites:
     def test_fan_code_chrome(self):
         print("fb")
         self.driver.get("https://www.fancode.com/")
-        # assert self.driver.title == "Watch Live Cricket Streaming, Live Scores, Highlights " \
-        assert self.driver.title == "hi"
+        assert self.driver.title == "Watch Live Cricket Streaming, Live Scores, Highlights "
         fancode_screenshot = self.driver.get_screenshot_as_png()
 
         # Save the screenshot to a file
@@ -18,7 +17,7 @@ class TestWebsites:
 
     def test_gmail_chrome(self):
         self.driver.get("https://www.google.com/gmail/about/")
-        assert self.driver.title == "Gmail: Private and secure email at no cost | Google Workspacee"
+        assert self.driver.title == "Gmail: Private and secure email at no cost | Google Workspace"
         gmail_screenshot = self.driver.get_screenshot_as_png()
         # Save the screenshot to a file
         with open("gmail_screenshot.png", "wb") as file:
@@ -26,7 +25,7 @@ class TestWebsites:
 
     def test_fb_chrome(self):
         self.driver.get("https://www.facebook.com/")
-        assert self.driver.title == "Facebook – log in or sign upe"
+        assert self.driver.title == "Facebook – log in or sign up"
         fb_screenshot = self.driver.get_screenshot_as_png()
 
         # Save the screenshot to a file
@@ -35,7 +34,7 @@ class TestWebsites:
 
     def test_insta_chrome(self):
         self.driver.get("https://www.instagram.com/")
-        assert self.driver.title == "Instagrame"
+        assert self.driver.title == "Instagram"
         insta_screenshot = self.driver.get_screenshot_as_png()
 
         # Save the screenshot to a file
